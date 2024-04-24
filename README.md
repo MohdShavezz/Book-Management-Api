@@ -38,16 +38,42 @@ npm run start
 -  Endpoint: /api/book/create
 -  Description: Add a new book to the database.
 
+eg Curl X-:
+```
+{
+  "title":"title",
+  "author":"author",
+  "publish_year":  "2023-12-20"
+}
+```
 
 ### Auth APIs
 #### Sign Up a User
 -  Method: POST
 -  Endpoint: /api/auth/signup
 -  Description: Register a new user in the system.
+
+eg Curl X-:
+```
+{
+  "fullName":"",
+  "username":"",
+  "password":"",
+  "confirmPassword":"",
+  "gender":""
+}
+```
 #### Log In a User
 -  Method: POST
 -  Endpoint: /api/auth/login
 -  Description: Authenticate and log in a user.
+eg Curl X-:
+```
+{
+  "username":"",
+  "password":""
+}
+```
 #### Log Out a User
 -  Method: POST
 -  Endpoint: /api/auth/logout
