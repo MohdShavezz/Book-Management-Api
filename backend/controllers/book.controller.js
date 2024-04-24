@@ -6,7 +6,7 @@ export const getAllBooks = async (req, res) => {
         if(!books) res.status(500).json({ error: "no books found" });
 		res.status(200).json(books);
 	} catch (error) {
-		console.log("Error in login controller", error.message);
+		console.log("Error in getAllBook", error.message);
 		res.status(500).json({ error: "Internal Server Error" });
 	}
 }
@@ -23,7 +23,7 @@ export const createBook = async (req, res) => {
         if(!book) res.status(500).json({ error: "no books created" });
 		res.status(200).json(book);
 	} catch (error) {
-		console.log("Error in login controller", error.message);
+		console.log("Error in createBook", error.message);
 		res.status(500).json({ error: "Internal Server Error" });
 	}
 }
@@ -36,7 +36,7 @@ export const getBook = async (req, res) => {
         }
 		res.status(200).json(book);
 	} catch (error) {
-		console.log("Error in login controller", error.message);
+		console.log("Error in getBook", error.message);
 		res.status(500).json({ error: "Internal Server Error" });
 	}
 }
@@ -46,7 +46,7 @@ export const updateBook = async (req, res) => {
         if(!book) res.status(500).json({ error: "not updated" });
 		res.status(200).json(book);
 	} catch (error) {
-		console.log("Error in login controller", error.message);
+		console.log("Error in updateBook", error.message);
 		res.status(500).json({ error: "Internal Server Error" });
 	}
 }
@@ -56,7 +56,20 @@ export const deleteBook = async (req, res) => {
         if(!book) res.status(500).json({ error: "not deleted" });
 		res.status(200).json(book);
 	} catch (error) {
-		console.log("Error in login controller", error.message);
+		console.log("Error in deletion book", error.message);
+		res.status(500).json({ error: "Internal Server Error" });
+	}
+}
+
+export const getBooksByAuthorName = async (req, res) =>{
+	try {
+		const {authorName} = req.params
+		const books = await Book.find({ author: { $regex: authorName, $options: 'i' } });
+        if(!books) res.status(500).json({ error: "no books" });
+		res.status(200).json(books);
+		return
+	} catch (error) {
+		console.log("Error getBooksByAuthor", error.message);
 		res.status(500).json({ error: "Internal Server Error" });
 	}
 }
