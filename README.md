@@ -46,6 +46,10 @@ eg Curl X-:
   "publish_year":  "2023-12-20"
 }
 ```
+#### Get Books by its author
+-  Method: GET
+-  Endpoint: /api/book/author/{author-name}
+-  Description:  Retrieve a list of all books in the database by author name.
 
 ### Auth APIs
 #### Sign Up a User
